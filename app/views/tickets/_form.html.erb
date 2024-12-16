@@ -1,0 +1,18 @@
+<%= form_with url: form_url, method: form_method, local: true do |form| %>
+  <!-- Input field for the ticket's name -->
+  <div class="mb-3">
+    <%= form.label :name, "Name" %> <!-- Label for the name field -->
+    <%= form.text_field :name, value: ticket['name'], class: "form-control" %> <!-- Input for ticket name -->
+  </div>
+
+  <% if form_method == :post %> <!-- Include description field only for create action -->
+    <!-- Input field for the ticket's description -->
+    <div class="mb-3">
+      <%= form.label :description, "Description" %> <!-- Label for the description field -->
+      <%= form.text_area :description, value: ticket['description'], class: "form-control" %> <!-- Input for ticket description -->
+    </div>
+  <% end %>
+
+  <!-- Submit button -->
+  <%= form.submit form_button_text, class: "btn btn-primary" %> <!-- Button with dynamic text -->
+<% end %>

@@ -1,0 +1,12 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <!-- Displays the content of the message -->
+    <p><%= message['content'] %></p>
+
+    <!-- Displays the user's email and role, or fallback values if unavailable -->
+    <small class="text-muted">
+      By: <%= message.dig('user', 'email') || "Unknown" %> 
+      (<%= message.dig('user', 'role') || "User" %>)
+    </small>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<h1>Login</h1>
+
+<!-- Login form -->
+<%= form_with url: login_path, method: :post do %>
+  <!-- Email input field -->
+  <div class="mb-3">
+    <%= label_tag :email, "Email" %> <!-- Label for email -->
+    <%= email_field_tag :email, nil, class: "form-control", required: true %> <!-- Email input -->
+  </div>
+
+  <!-- Password input field -->
+  <div class="mb-3">
+    <%= label_tag :password, "Password" %> <!-- Label for password -->
+    <%= password_field_tag :password, nil, class: "form-control", required: true %> <!-- Password input -->
+  </div>
+
+  <!-- Submit button -->
+  <%= submit_tag "Login", class: "btn btn-primary" %> <!-- Triggers form submission -->
+<% end %>

@@ -1,0 +1,13 @@
+<%= form_with url: messages_ticket_path(@ticket['id']), 
+              method: :post, 
+              local: false, 
+              data: { controller: "clear-form", action: "turbo:submit-end->clear-form#clear" } do |form| %>
+              
+  <!-- Input field for message content -->
+  <div class="mb-3">
+    <%= form.text_area :content, class: "form-control", placeholder: "Write your message..." %> <!-- Text area for entering the message -->
+  </div>
+
+  <!-- Submit button -->
+  <%= form.submit "Send Message", class: "btn btn-primary mb-3" %> <!-- Button to submit the form -->
+<% end %>

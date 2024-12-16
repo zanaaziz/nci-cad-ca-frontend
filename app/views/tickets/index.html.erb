@@ -1,0 +1,10 @@
+<h1 class="mb-2">Tickets</h1> <!-- Header for the Tickets list page -->
+
+<% if @tickets.empty? %> <!-- Conditional check for empty ticket list -->
+  <p class="text-muted">No tickets open.</p> <!-- Message shown when there are no tickets -->
+<% else %>
+  <div class="list-group">
+    <!-- Renders each ticket using the _ticket partial -->
+    <%= render partial: "ticket", collection: @tickets, as: :ticket %>
+  </div>
+<% end %>

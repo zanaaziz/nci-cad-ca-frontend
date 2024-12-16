@@ -1,0 +1,26 @@
+<a href="<%= ticket_path(ticket['id']) %>" class="ticket-item mb-3">
+  <div class="card">
+    <div class="card-body">
+      <!-- Displays the ticket name as the title -->
+      <h5 class="card-title text-truncate"><%= ticket['name'] %></h5>
+
+      <!-- Displays the ticket description -->
+      <p class="card-text"><%= ticket['description'] %></p>
+
+      <!-- Displays the sentiment and creation date of the ticket -->
+      <p class="card-text mb-3">
+        <strong>Sentiment:</strong> <%= ticket['sentiment'] %> | 
+        <strong>Created:</strong> <%= ticket['created_at'] %>
+      </p>
+
+      <!-- Button to edit the ticket -->
+      <%= link_to "Edit", edit_ticket_path(ticket['id']), class: "btn btn-primary" %>
+
+      <!-- Button to delete the ticket -->
+      <%= link_to "Delete", ticket_path(ticket['id']), 
+                  data: { 'turbo-confirm': "Are you sure you want to delete this ticket?", 
+                          "turbo-method": :delete }, 
+                  class: "btn btn-danger" %>
+    </div>
+  </div>
+</a>

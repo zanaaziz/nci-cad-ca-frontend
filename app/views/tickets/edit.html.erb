@@ -1,0 +1,8 @@
+<h1>Edit Ticket</h1>
+
+<!-- Reuses the form partial for editing a ticket -->
+<%= render 'form', 
+           form_url: ticket_path(@ticket['id']),  # URL for the update request
+           form_method: :put,  # HTTP method for updating the ticket
+           form_button_text: "Update Ticket",  # Text for the submit button
+           ticket: @ticket || {} %> <!-- Passes the current ticket details to the form -->

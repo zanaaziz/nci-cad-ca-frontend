@@ -1,0 +1,8 @@
+<h1>Create New Ticket</h1>
+
+<!-- Reuses the form partial for creating a ticket -->
+<%= render 'form', 
+           form_url: create_ticket_tickets_path,  # URL for the create request
+           form_method: :post,  # HTTP method for creating a new ticket
+           form_button_text: "Create Ticket",  # Text for the submit button
+           ticket: @ticket || {} %> <!-- Passes an empty or initialized ticket object to the form -->

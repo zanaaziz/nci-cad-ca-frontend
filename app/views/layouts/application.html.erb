@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SmartHR</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %> 
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-light">
+    <!-- Navbar for navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+      <div class="container">
+        <!-- Brand logo -->
+        <a class="navbar-brand" href="/">SmartHR</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <!-- Links for authenticated users -->
+            <% if session[:jwt_token] %>
+              <li class="nav-item">
+                <%= link_to "Home", root_path, class: "nav-link" %> <!-- Redirects to the home page -->
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "Create a Ticket", tickets_path, class: "nav-link" %> <!-- Link to create a new ticket -->
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "Logout", logout_path, data: { "turbo-method": :delete }, class: "nav-link" %> <!-- Logout link with Turbo -->
+              </li>
+              
+            <% else %>
+              <!-- Link for unauthenticated users -->
+              <li class="nav-item">
+                <%= link_to "Login", login_path, class: "nav-link" %> <!-- Redirects to the login page -->
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Main content area -->
+    <div class="container pb-3">
+      <%= yield %> <!-- Renders content from child views -->
+    </div>
+  </body>
+</html>

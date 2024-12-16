@@ -1,0 +1,19 @@
+<h1 class="mb-4"><%= @ticket['name'] %></h1> <!-- Displays the name of the ticket -->
+
+<!-- Displays ticket details -->
+<p><strong>Sentiment:</strong> <%= @ticket['sentiment'] %></p> <!-- Shows the sentiment score -->
+<p><strong>Created:</strong> <%= @ticket['created_at'] %></p> <!-- Displays the creation date -->
+
+<hr>
+
+<h2>Messages</h2>
+<div id="messages">
+  <!-- Renders all messages using the _message partial -->
+  <%= render partial: "message", collection: @messages, as: :message %>
+</div>
+
+<hr>
+
+<h3>Add a Message</h3>
+<!-- Renders the message form partial for adding new messages -->
+<%= render partial: "message_form", locals: { ticket_id: @ticket['id'] } %>
