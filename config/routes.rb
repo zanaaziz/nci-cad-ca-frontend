@@ -4,8 +4,13 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :tickets, only: [:index, :show] do
+  resources :tickets, only: [:index, :show, :edit, :update, :destroy] do
     post "messages", to: "tickets#create_message", on: :member
+    
+    collection do
+      get "new", to: "tickets#new"
+      post "create_ticket", to: "tickets#create_ticket"
+    end
   end
 
   # get "pages/home"
