@@ -17,6 +17,12 @@
           <ul class="navbar-nav ms-auto">
             <% if session[:jwt_token] %>
               <li class="nav-item">
+                <%= link_to "Home", root_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Create a Ticket", tickets_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
                 <%= link_to "Logout", logout_path, data: { "turbo-method": :delete }, class: "nav-link" %>
               </li>
             <% else %>
