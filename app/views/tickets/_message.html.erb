@@ -1,6 +1,9 @@
 <div class="card mb-3">
   <div class="card-body">
     <p><%= message['content'] %></p>
-    <small class="text-muted">By: <%= message['user']['email'] %></small>
+    <small class="text-muted">
+      By: <%= message.dig('user', 'email') || "Unknown" %> 
+      (<%= message.dig('user', 'role') || "User" %>)
+    </small>
   </div>
 </div>
