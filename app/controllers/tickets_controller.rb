@@ -20,12 +20,28 @@ class TicketsController < ApplicationController
     @messages = JSON.parse(messages_response.body)
   end
 
+  def edit
+    show
+  end
+  
+  def update
+    response = Faraday.put("#{ENV['API_BASE_URL']}/tickets/#{params[:id]}", { name: params[:name] }.to_json, "Content-Type" => "application/json") do |req|
+      req.headers["Authorization"] = "Bearer #{current_user_token}"
+    end
+  
+    if response.status == 200
+      redirect_to ticket_path(params[:id]), notice: "Ticket updated successfully!"
+    else
+      flash[:alert] = "Failed to update ticket."
+      render :edit
+    end
+  end
+
   def new
     @ticket = {}
   end
 
   def create_ticket
-    # Create the ticket
     ticket_response = Faraday.post("#{ENV['API_BASE_URL']}/tickets", { name: params[:name], description: params[:description] }.to_json, "Content-Type" => "application/json") do |req|
       req.headers["Authorization"] = "Bearer #{current_user_token}"
     end
@@ -33,12 +49,11 @@ class TicketsController < ApplicationController
     if ticket_response.status == 201
       ticket = JSON.parse(ticket_response.body)
   
-      # Create the first message for the ticket using its description
       Faraday.post("#{ENV['API_BASE_URL']}/tickets/#{ticket['id']}/messages", { content: ticket['description'] }.to_json, "Content-Type" => "application/json") do |req|
         req.headers["Authorization"] = "Bearer #{current_user_token}"
       end
   
-      redirect_to tickets_path, notice: "Ticket created with the first message!"
+      redirect_to ticket_path(ticket['id']), notice: "Ticket created with the first message!"
     else
       Rails.logger.error "Failed to create ticket: #{ticket_response.body}"
       flash[:alert] = "Failed to create ticket."

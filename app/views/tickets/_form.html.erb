@@ -1,0 +1,15 @@
+<%= form_with url: form_url, method: form_method, local: true do |form| %>
+  <div class="mb-3">
+    <%= form.label :name, "Name" %>
+    <%= form.text_field :name, value: ticket['name'], class: "form-control" %>
+  </div>
+
+  <% if form_method == :post %>
+    <div class="mb-3">
+      <%= form.label :description, "Description" %>
+      <%= form.text_area :description, value: ticket['description'], class: "form-control" %>
+    </div>
+  <% end %>
+
+  <%= form.submit form_button_text, class: "btn btn-primary" %>
+<% end %>

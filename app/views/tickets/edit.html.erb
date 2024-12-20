@@ -1,0 +1,6 @@
+<h1>Edit Ticket</h1>
+<%= render 'form', 
+           form_url: ticket_path(@ticket['id']), 
+           form_method: :put, 
+           form_button_text: "Update Ticket", 
+           ticket: @ticket || {} %>
