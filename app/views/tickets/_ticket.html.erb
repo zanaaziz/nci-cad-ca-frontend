@@ -1,11 +1,15 @@
-<a href="<%= ticket_path(ticket['id']) %>" class="list-group-item list-group-item-action">
-  <h5 class="mb-1"><%= ticket['name'] %></h5>
-  
-  <p class="mb-1 text-truncate"><%= ticket['description'] %></p>
+<a href="<%= ticket_path(ticket['id']) %>" class="ticket-item mb-3">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title text-truncate"><%= ticket['name'] %></h5>
 
-  <small>Sentiment: <%= ticket['sentiment'] %></small>
+      <p class="card-text"><%= ticket['description'] %></p>
 
-  <%= link_to "Edit", edit_ticket_path(ticket['id']), class: "btn btn-warning btn-sm" %>
+      <p class="card-text mb-3"><strong>Sentiment:</strong> <%= ticket['sentiment'] %> | <strong>Created:</strong> <%= ticket['created_at'] %></p>
 
-  <%= link_to "Delete", ticket_path(ticket['id']), data: { 'turbo-confirm': "Are you sure you want to delete this ticket?", "turbo-method": :delete }, class: "btn btn-danger btn-sm" %>
+      <%= link_to "Edit", edit_ticket_path(ticket['id']), class: "btn btn-primary" %>
+
+      <%= link_to "Delete", ticket_path(ticket['id']), data: { 'turbo-confirm': "Are you sure you want to delete this ticket?", "turbo-method": :delete }, class: "btn btn-danger" %>
+    </div>
+  </div>
 </a>

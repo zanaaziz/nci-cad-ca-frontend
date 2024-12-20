@@ -15,3 +15,12 @@
  */
 
  @import "bootstrap";
+
+ a.ticket-item {
+    text-decoration: none;
+    color: inherit;
+ }
+
+ .container {
+    max-width: 700px;
+ }
