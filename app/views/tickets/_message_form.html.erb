@@ -1,4 +1,4 @@
-<%= form_with url: messages_ticket_path(@ticket['id']), method: :post, local: false do |form| %>
+<%= form_with url: messages_ticket_path(@ticket['id']), method: :post, local: false, data: { controller: "clear-form", action: "turbo:submit-end->clear-form#clear" } do |form| %>
   <div class="mb-3">
     <%= form.text_area :content, class: "form-control", placeholder: "Write your message..." %>
   </div>
