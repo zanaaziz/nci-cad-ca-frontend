@@ -1,0 +1,6 @@
+<%= form_with url: "/tickets/#{ticket_id}/messages", method: :post, local: false do |form| %>
+  <div class="mb-3">
+    <%= form.text_area :content, class: "form-control", placeholder: "Write your message..." %>
+  </div>
+  <%= form.submit "Send Message", class: "btn btn-primary" %>
+<% end %>

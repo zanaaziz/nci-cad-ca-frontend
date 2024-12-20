@@ -1,0 +1,15 @@
+<h1 class="mb-4"><%= @ticket['name'] %></h1>
+<p><%= @ticket['description'] %></p>
+<p><strong>Status:</strong> <%= @ticket['status'] %></p>
+
+<hr>
+
+<h2>Messages</h2>
+<div id="messages">
+  <%= render partial: "message", collection: @messages, as: :message %>
+</div>
+
+<hr>
+
+<h3>Add a Message</h3>
+<%= render partial: "message_form", locals: { ticket_id: @ticket['id'] } %>
