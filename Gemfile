@@ -63,3 +63,5 @@ gem "sass-rails", "~> 6.0"
 gem "hotwire-rails", "~> 0.1.3"
 
 gem "dotenv-rails", "~> 3.1"
+
+gem "faraday", "~> 2.12"
