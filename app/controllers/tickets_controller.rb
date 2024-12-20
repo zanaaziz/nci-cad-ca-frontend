@@ -21,19 +21,13 @@ class TicketsController < ApplicationController
   end
 
   def create_message
-    Rails.logger.info "Params: #{params.inspect}" # Add this line
-  
     response = Faraday.post("#{ENV['API_BASE_URL']}/tickets/#{params[:id]}/messages", { content: params[:content] }.to_json, "Content-Type" => "application/json") do |req|
       req.headers["Authorization"] = "Bearer #{current_user_token}"
     end
   
-    Rails.logger.info "API Response: #{response.status} - #{response.body}"
-  
     if response.status == 201
       @message = JSON.parse(response.body)
-      Rails.logger.info "Created Message: #{@message.inspect}"
     else
-      Rails.logger.error "Message creation failed: #{response.body}"
       @message = nil
     end
   
