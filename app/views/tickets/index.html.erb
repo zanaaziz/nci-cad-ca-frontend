@@ -1,4 +1,9 @@
 <h1 class="mb-2">Tickets</h1>
-<div class="list-group">
-  <%= render partial: "ticket", collection: @tickets, as: :ticket %>
-</div>
+
+<% if @tickets.empty? %>
+  <p class="text-muted">No tickets open.</p>
+<% else %>
+  <div class="list-group">
+    <%= render partial: "ticket", collection: @tickets, as: :ticket %>
+  </div>
+<% end %>
