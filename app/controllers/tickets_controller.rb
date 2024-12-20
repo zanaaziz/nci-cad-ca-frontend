@@ -89,10 +89,10 @@ class TicketsController < ApplicationController
     end
   
     if response.status == 200
-      redirect_to tickets_path, notice: "Ticket deleted successfully!"
+      redirect_to "/", notice: "Ticket deleted successfully!"
     else
       flash[:alert] = "Failed to delete ticket."
-      redirect_to tickets_path
+      redirect_to "/"
     end
   end
 end
