@@ -82,4 +82,17 @@ class TicketsController < ApplicationController
       end
     end
   end
+
+  def destroy
+    response = Faraday.delete("#{ENV['API_BASE_URL']}/tickets/#{params[:id]}") do |req|
+      req.headers["Authorization"] = "Bearer #{current_user_token}"
+    end
+  
+    if response.status == 200
+      redirect_to tickets_path, notice: "Ticket deleted successfully!"
+    else
+      flash[:alert] = "Failed to delete ticket."
+      redirect_to tickets_path
+    end
+  end
 end

@@ -4,4 +4,8 @@
   <p class="mb-1 text-truncate"><%= ticket['description'] %></p>
 
   <small>Sentiment: <%= ticket['sentiment'] %></small>
+
+  <%= link_to "Edit", edit_ticket_path(ticket['id']), class: "btn btn-warning btn-sm" %>
+
+  <%= link_to "Delete", ticket_path(ticket['id']), data: { 'turbo-confirm': "Are you sure you want to delete this ticket?", "turbo-method": :delete }, class: "btn btn-danger btn-sm" %>
 </a>
