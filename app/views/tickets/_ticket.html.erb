@@ -1,5 +1,7 @@
 <a href="<%= ticket_path(ticket['id']) %>" class="list-group-item list-group-item-action">
   <h5 class="mb-1"><%= ticket['name'] %></h5>
-  <p class="mb-1"><%= ticket['description'] %></p>
-  <small>Status: <%= ticket['status'] %></small>
+  
+  <p class="mb-1 text-truncate"><%= ticket['description'] %></p>
+
+  <small>Sentiment: <%= ticket['sentiment'] %></small>
 </a>
